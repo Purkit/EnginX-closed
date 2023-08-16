@@ -1,0 +1,74 @@
+#include <enginx/opengl/loader/loader.h>
+
+PFNGLCREATESHADERPROC ex_glCreateShader = NULL;
+PFNGLSHADERSOURCEPROC ex_glShaderSource = NULL;
+PFNGLCOMPILESHADERPROC ex_glCompileShader = NULL;
+PFNGLCREATEPROGRAMPROC ex_glCreateProgram = NULL;
+PFNGLATTACHSHADERPROC ex_glAttachShader = NULL;
+PFNGLLINKPROGRAMPROC ex_glLinkProgram = NULL;
+PFNGLDELETESHADERPROC ex_glDeleteShader = NULL;
+PFNGLGENVERTEXARRAYSPROC ex_glGenVertexArrays = NULL;
+PFNGLGENBUFFERSPROC ex_glGenBuffers = NULL;
+PFNGLBINDVERTEXARRAYPROC ex_glBindVertexArray = NULL;
+PFNGLDELETEVERTEXARRAYSPROC ex_glDeleteVertexArrays = NULL;
+PFNGLBINDBUFFERPROC ex_glBindBuffer = NULL;
+PFNGLDELETEBUFFERSPROC ex_glDeleteBuffers = NULL;
+PFNGLBUFFERDATAPROC ex_glBufferData = NULL;
+PFNGLVERTEXATTRIBPOINTERPROC ex_glVertexAttribPointer = NULL;
+PFNGLENABLEVERTEXATTRIBARRAYPROC ex_glEnableVertexAttribArray = NULL;
+PFNGLUSEPROGRAMPROC ex_glUseProgram = NULL;
+PFNGLDELETEPROGRAMPROC ex_glDeleteProgram = NULL;
+PFNGLGETUNIFORMLOCATIONPROC ex_glGetUniformLocation = NULL;
+PFNGLUNIFORM1IPROC ex_glUniform1i = NULL;
+PFNGLUNIFORM1FPROC ex_glUniform1f = NULL;
+PFNGLUNIFORM2FVPROC ex_glUniform2fv = NULL;
+PFNGLUNIFORM2FPROC ex_glUniform2f = NULL;
+PFNGLUNIFORM3FVPROC ex_glUniform3fv = NULL;
+PFNGLUNIFORM3FPROC ex_glUniform3f = NULL;
+PFNGLUNIFORM4FVPROC ex_glUniform4fv = NULL;
+PFNGLUNIFORM4FPROC ex_glUniform4f = NULL;
+PFNGLUNIFORMMATRIX2FVPROC ex_glUniformMatrix2fv = NULL;
+PFNGLUNIFORMMATRIX3FVPROC ex_glUniformMatrix3fv = NULL;
+PFNGLUNIFORMMATRIX4FVPROC ex_glUniformMatrix4fv = NULL;
+PFNGLGETSHADERIVPROC ex_glGetShaderiv = NULL;
+PFNGLGETSHADERINFOLOGPROC ex_glGetShaderInfoLog = NULL;
+PFNGLGETPROGRAMIVPROC ex_glGetProgramiv = NULL;
+PFNGLGETPROGRAMINFOLOGPROC ex_glGetProgramInfoLog = NULL;
+ 
+void LoadGL()
+{
+    ex_glCreateShader = (PFNGLCREATESHADERPROC)(void *)glXGetProcAddress((const GLubyte *)"glCreateShader");
+    ex_glShaderSource = (PFNGLSHADERSOURCEPROC)(void *)glXGetProcAddress((const GLubyte *)"glShaderSource");
+    ex_glCompileShader = (PFNGLCOMPILESHADERPROC)(void *)glXGetProcAddress((const GLubyte *)"glCompileShader");
+    ex_glCreateProgram = (PFNGLCREATEPROGRAMPROC)(void *)glXGetProcAddress((const GLubyte *)"glCreateProgram");
+    ex_glAttachShader = (PFNGLATTACHSHADERPROC)(void *)glXGetProcAddress((const GLubyte *)"glAttachShader");
+    ex_glLinkProgram = (PFNGLLINKPROGRAMPROC)(void *)glXGetProcAddress((const GLubyte *)"glLinkProgram");
+    ex_glDeleteShader = (PFNGLDELETESHADERPROC)(void *)glXGetProcAddress((const GLubyte *)"glDeleteShader");
+    ex_glGenVertexArrays = (PFNGLGENVERTEXARRAYSPROC)(void *)glXGetProcAddress((const GLubyte *)"glGenVertexArrays");
+    ex_glGenBuffers = (PFNGLGENBUFFERSPROC)(void *)glXGetProcAddress((const GLubyte *)"glGenBuffers");
+    ex_glBindVertexArray = (PFNGLBINDVERTEXARRAYPROC)(void *)glXGetProcAddress((const GLubyte *)"glBindVertexArray");
+    ex_glDeleteVertexArrays = (PFNGLDELETEVERTEXARRAYSPROC)(void *)glXGetProcAddress((const GLubyte *)"glDeleteVertexArrays");
+    ex_glBindBuffer = (PFNGLBINDBUFFERPROC)(void *)glXGetProcAddress((const GLubyte *)"glBindBuffer");
+    ex_glDeleteBuffers = (PFNGLDELETEBUFFERSPROC)(void *)glXGetProcAddress((const GLubyte *)"glDeleteBuffers");
+    ex_glBufferData = (PFNGLBUFFERDATAPROC)(void *)glXGetProcAddress((const GLubyte *)"glBufferData");
+    ex_glVertexAttribPointer = (PFNGLVERTEXATTRIBPOINTERPROC)(void *)glXGetProcAddress((const GLubyte *)"glVertexAttribPointer");
+    ex_glEnableVertexAttribArray = (PFNGLENABLEVERTEXATTRIBARRAYPROC)(void *)glXGetProcAddress((const GLubyte *)"glEnableVertexAttribArray");
+    ex_glUseProgram = (PFNGLUSEPROGRAMPROC)(void *)glXGetProcAddress((const GLubyte *)"glUseProgram");
+    ex_glDeleteProgram = (PFNGLDELETEPROGRAMPROC)(void *)glXGetProcAddress((const GLubyte *)"glDeleteProgram");
+    ex_glGetUniformLocation = (PFNGLGETUNIFORMLOCATIONPROC)(void *)glXGetProcAddress((const GLubyte *)"glGetUniformLocation");
+    ex_glUniform1i = (PFNGLUNIFORM1IPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniform1i");
+    ex_glUniform1f = (PFNGLUNIFORM1FPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniform1f");
+    ex_glUniform2fv = (PFNGLUNIFORM2FVPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniform2fv");
+    ex_glUniform2f = (PFNGLUNIFORM2FPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniform2f");
+    ex_glUniform3fv = (PFNGLUNIFORM3FVPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniform3fv");
+    ex_glUniform3f = (PFNGLUNIFORM3FPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniform3f");
+    ex_glUniform4fv = (PFNGLUNIFORM4FVPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniform4fv");
+    ex_glUniform4f = (PFNGLUNIFORM4FPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniform4f");
+    ex_glUniformMatrix2fv = (PFNGLUNIFORMMATRIX2FVPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniformMatrix2fv");
+    ex_glUniformMatrix3fv = (PFNGLUNIFORMMATRIX3FVPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniformMatrix3fv");
+    ex_glUniformMatrix4fv = (PFNGLUNIFORMMATRIX4FVPROC)(void *)glXGetProcAddress((const GLubyte *)"glUniformMatrix4fv");
+    ex_glGetShaderiv = (PFNGLGETSHADERIVPROC)(void *)glXGetProcAddress((const GLubyte *)"glGetShaderiv");
+    ex_glGetShaderInfoLog = (PFNGLGETSHADERINFOLOGPROC)(void *)glXGetProcAddress((const GLubyte *)"glGetShaderInfoLog");
+    ex_glGetProgramiv = (PFNGLGETPROGRAMIVPROC)(void *)glXGetProcAddress((const GLubyte *)"glGetProgramiv");
+    ex_glGetProgramInfoLog = (PFNGLGETPROGRAMINFOLOGPROC)(void *)glXGetProcAddress((const GLubyte *)"glGetProgramInfoLog");
+}

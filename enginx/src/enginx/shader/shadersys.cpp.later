@@ -1,0 +1,68 @@
+#include <enginx/shader/shadersys.hpp>
+#include <enginx/utility/asserts.hpp>
+#include <enginx/utility/logger.hpp>
+
+namespace enginx
+{
+	std::shared_ptr<Shader> Shader::Create(const std::string& filepath)
+	{
+		switch (Renderer::GetAPI())
+		{
+			case RendererAPI::API::None:    STOP_IF_TRUE(false, "RendererAPI::None is currently not supported!"); return nullptr;
+			case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(filepath);
+		}
+
+        ERROR("The requested rendering API is not supported.");
+		return nullptr;
+	}
+
+	std::shared_ptr<Shader> Shader::Create(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
+	{
+		switch (Renderer::GetAPI())
+		{
+			case RendererAPI::API::None:    STOP_IF_TRUE(false, "RendererAPI::None is currently not supported!"); return nullptr;
+			case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
+		}
+
+		ERROR("The requested rendering API is not supported.");
+		return nullptr;
+	}
+
+	void ShaderLibrary::Add(const std::string& name, const std::shared_ptr<Shader>& shader)
+	{
+		HZ_CORE_ASSERT(!Exists(name), "Shader already exists!");
+		m_Shaders[name] = shader;
+	}
+
+	void ShaderLibrary::Add(const std::shared_ptr<Shader>& shader)
+	{
+		auto& name = shader->GetName();
+		Add(name, shader);
+	}
+
+	std::shared_ptr<Shader> ShaderLibrary::Load(const std::string& filepath)
+	{
+		auto shader = Shader::Create(filepath);
+		Add(shader);
+		return shader;
+	}
+
+	std::shared_ptr<Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepath)
+	{
+		auto shader = Shader::Create(filepath);
+		Add(name, shader);
+		return shader;
+	}
+
+	std::shared_ptr<Shader> ShaderLibrary::Get(const std::string& name)
+	{
+		HZ_CORE_ASSERT(Exists(name), "Shader not found!");
+		return m_Shaders[name];
+	}
+
+	bool ShaderLibrary::Exists(const std::string& name) const
+	{
+		return m_Shaders.find(name) != m_Shaders.end();
+	}
+
+}
