@@ -1,5 +1,5 @@
 # EnginX
-C++ Multi API 3D Game Engine Exclusively for Linux and BSD.
+C++ Multi API 3D Rendering Engine Exclusively for Linux and BSD.
 
 ---
 ## License
