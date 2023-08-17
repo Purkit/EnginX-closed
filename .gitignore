@@ -1,0 +1,7 @@
+/.vscode/
+/build/
+/Assets/
+/bin/
+/obj/
+/obj2/
+*.bak
